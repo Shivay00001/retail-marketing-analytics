@@ -4,5 +4,6 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 ENV PYTHONUNBUFFERED=1
-EXPOSE 8000
-CMD ["python", "main.py"]
+ENV MPLBACKEND=Agg
+# Batch job: runs RFM segmentation and writes segmentation_report.md + PNGs
+CMD ["python", "segmentation.py"]
